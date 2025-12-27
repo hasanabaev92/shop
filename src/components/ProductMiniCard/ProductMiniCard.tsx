@@ -1,12 +1,14 @@
 import type { ProductT } from "../../types/productType"
 import './ProductMiniCard.css'
 
-type ProductMiniCardContract = Omit<ProductT, 'id'>
+type ProductMiniCardContract = Omit<ProductT, 'id'> & {
+  onclickFn: () => void
+}
 
-function ProductMiniCard({name,price,lost}: ProductMiniCardContract) {
+function ProductMiniCard({name,price,lost,onclickFn}: ProductMiniCardContract) {
 
   return (
-    <div className="card-mini">
+    <div onClick={onclickFn} className="card-mini">
       <div>{name}</div>
       <div>Цена: {price} руб.</div>
       <div>Остаток на складе: {lost} шт.</div>
