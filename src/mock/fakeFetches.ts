@@ -4,6 +4,7 @@ import type { ProductListT, ProductT } from "../types/productType";
 
 let productsDataBase: ProductListT = [];
 
+
 function generateRandomRpoduct(): ProductT {
   return {
     id: faker.string.uuid(),
@@ -27,3 +28,11 @@ export const getProducts = async () => {
 
   return productsDataBase;
 };
+
+export const getProductById = async (id?: ProductT['id']) => {
+  await new Promise((res) => setTimeout(res, 500));
+
+  if (id === undefined) return;
+
+  return productsDataBase.find(el => el.id === id)
+}
