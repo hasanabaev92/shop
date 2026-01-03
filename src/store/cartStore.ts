@@ -1,13 +1,14 @@
 import { create } from "zustand";
 
 import type { CartT } from "../types/cartType";
-import type { ProductT } from "../types/productType";
+import type { ProductCartT, ProductT } from "../types/productType";
 
 type CartStoreT = CartT & {
-  addToCart: (product: ProductT) => void;
-  decOneProductFromCart: (id: ProductT["id"]) => void;
-  removeOneProductFromCart: (id: ProductT["id"]) => void;
+  addToCart: (product: ProductT | ProductCartT) => void;
+  decOneProductFromCart: (id: ProductCartT["id"]) => void;
+  removeOneProductFromCart: (id: ProductCartT["id"]) => void;
   clearCart: () => void;
+  isInCart: (id: ProductCartT["id"]) => boolean;
 };
 
 export const useCartStore = create<CartStoreT>((set, get, store) => ({
@@ -81,4 +82,8 @@ export const useCartStore = create<CartStoreT>((set, get, store) => ({
   clearCart: () => {
     set(store.getInitialState());
   },
+  isInCart: (id) => {
+    const productList = get().productList;
+    return !!productList[id];
+  }
 }));

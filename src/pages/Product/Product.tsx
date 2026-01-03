@@ -20,7 +20,7 @@ function Product() {
   return (
     <>
       <div>Товар</div>
-      <ProductBigCard id={data?.id} name={data?.name} lost={data?.lost} price={data?.price} />
+      <ProductBigCard product={data} />
     </>
   )
 }
