@@ -5,19 +5,22 @@ import ProductBigCard from "../../components/ProductBigCard/ProductBigCard";
 
 function Product() {
   const paramses = useParams();
+  // http://localhost:5173/product/b53d6a25-8446-479b-84df-0b39eece9401
 
   const {isPending, error, data } = useQuery({
-    queryKey: ["BIGPRODUCT", paramses.id],
-    queryFn: () => getProductById(paramses.id),
-    enabled: !!paramses.id
+    queryKey: ["BIGPRODUCT", paramses.ZZZ],
+    queryFn: () => getProductById(paramses.ZZZ),
+    enabled: !!paramses.ZZZ
   })
 
-  if (!data) return;
+  if (isPending) return (<div>Загрузка...</div>);
+  if (!data) return (<div>Товар не найден</div>);
+  if (error) return (<div>Ошибка загрузки товара</div>);
 
   return (
     <>
-        <div>Товар</div>
-        <ProductBigCard id={data?.id} name={data?.name} lost={data?.lost} price={data?.price}  />
+      <div>Товар</div>
+      <ProductBigCard id={data?.id} name={data?.name} lost={data?.lost} price={data?.price} />
     </>
   )
 }

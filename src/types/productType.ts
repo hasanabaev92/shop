@@ -7,6 +7,6 @@ export type ProductT = {
 
 export type ProductListT = ProductT[]
 
-export type ProductCartT = Omit<ProductT, 'lost'> & {
+export type ProductCartT = ProductT & {
     orderCount: number
 }

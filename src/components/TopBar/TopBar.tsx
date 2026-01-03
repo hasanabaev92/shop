@@ -3,7 +3,7 @@ import { Link } from "react-router";
 function TopBar() {
   return (
     <>
-      <div>
+      <div style={{display: "flex", paddingBottom: "10px"}}>
         <div>
           <Link to="/">
             <button>Список товаров</button>
