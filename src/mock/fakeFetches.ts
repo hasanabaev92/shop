@@ -1,6 +1,7 @@
 import { fakerRU as faker } from '@faker-js/faker';
 
 import type { ProductListT, ProductT } from "../types/productType";
+import type { AddProductT } from '../types/schemas/addProduct.schema';
 
 let productsDataBase: ProductListT = [];
 
@@ -26,7 +27,7 @@ export function generateRandomRpoducts() {
 export const getProducts = async () => {
   await new Promise((res) => setTimeout(res, 500)); // ждем 500мс
 
-  return productsDataBase;
+  return [...productsDataBase];
 };
 
 export const getProductById = async (id?: ProductT['id']) => {
@@ -35,4 +36,18 @@ export const getProductById = async (id?: ProductT['id']) => {
   if (id === undefined) return;
 
   return productsDataBase.find(el => el.id === id)
+}
+
+
+export const addProductFn = async (product: AddProductT) => {
+  await new Promise((res) => setTimeout(res, 500));
+
+  const _id = faker.string.uuid();
+
+  productsDataBase.push({
+    id: _id,
+    ...product,
+  })
+
+  return {code: 200, newId: _id}
 }

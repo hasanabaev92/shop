@@ -24,7 +24,7 @@ function ProductList() {
   }
 
   const ProductDiv = data?.map((x) => (
-      <ProductMiniCard onclickFn={() => handleClickProduct(x.id)} product={x}  />
+      <ProductMiniCard key={x.id} onclickFn={() => handleClickProduct(x.id)} product={x}  />
   ))
 
   if (isPending) return (<div>Загрузка...</div>);
