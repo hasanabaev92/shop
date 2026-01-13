@@ -55,9 +55,9 @@ function Admin() {
 
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          form.handleSubmit();
+          e.preventDefault();      // форма не очистится при нажатии "Добавить"
+          e.stopPropagation();     // предотвращает все родительские события
+          form.handleSubmit();     // уведомление юзформа, что случился Submit
         }}
       >
         <div>
