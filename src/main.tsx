@@ -13,7 +13,12 @@ const bootstrap = () => {
   generateRandomRpoducts();
 }
 
-bootstrap();
+try {
+  bootstrap();
+} catch (error) {
+  console.log(error);
+}
+
 
 const queryClient = new QueryClient();
 
