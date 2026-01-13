@@ -24,8 +24,11 @@ function ProductList() {
   }
 
   const ProductDiv = data?.map((x) => (
-      <ProductMiniCard onclickFn={() => handleClickProduct(x.id)} key={x.id} name={x.name} price={x.price} lost={x.lost}  />
+      <ProductMiniCard key={x.id} onclickFn={() => handleClickProduct(x.id)} product={x}  />
   ))
+
+  if (isPending) return (<div>Загрузка...</div>);
+  if (error) return (<div>Ошибка загрузки товара</div>);
 
 
   return (

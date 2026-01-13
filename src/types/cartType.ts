@@ -4,5 +4,5 @@ export type CartT = {
   productList: {
     [key: ProductCartT["id"]]: ProductCartT;
   }
-  totalPrice: number;
+  totalPrice: () => number;
 }

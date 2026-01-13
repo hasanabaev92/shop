@@ -10,31 +10,29 @@ const router = createBrowserRouter([
     path: "/",
     Component: Layout,
     children: [
-        {
-          index: true,
-          Component: ProductList,
-        },
-        {
-            path: "admin",
-            Component: Admin
-        },
-        {
-            path: "cart",
-            Component: Cart
-        },
-        {
-            path: "product",
-            children: [
-              {
-                path: ':id',
-                Component: Product
-              }
-            ]
-        }
-    ]
-  }
-
-
-])
+      {
+        index: true,
+        Component: ProductList,
+      },
+      {
+        path: "admin",
+        Component: Admin,
+      },
+      {
+        path: "cart",
+        Component: Cart,
+      },
+      {
+        path: "product",
+        children: [
+          {
+            path: ":ZZZ",
+            Component: Product,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 export default router;
